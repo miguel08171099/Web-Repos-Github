@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My first web</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+    $(Document).ready(function(){
+        $("button").click(function(){
+                usuario = $("#user").val();
+                url = "https://api.github.com/users/" + usuario;
+            	 $.getJSON(url).done(function(data) {
+            	    resultFollowers = data.followers;
+            	    $("#followers1").text(result);
+                  });
+                 i = 0;
+                 url2 = "https://api.github.com/users/" + usuario + "/repos";
+            	 $.getJSON(url2).done(function(data) {
+                    $.each(data, function(key, item) {
+                       //alert("Respuesta: " + item.name);
+                       i++;
+                       result = item.name;
+                       $("#name"+i).text(result);
+                       $("#followers"+i).text(resultFollowers);
+                    });
+                  });
+
+                 j = 0;
+                 url3 = "https://api.github.com/users/" + usuario + "/repos";
+            	 $.getJSON(url3).done(function(data) {
+                    $.each(data, function(key, item) {
+                       j++;
+                       result = item.description;
+                       $("#description"+j).text(result);
+                    });
+                  });
+        });
+    });
+    </script>
+
+</head>
+<body>
+
+<div class="container">
+    <h2>My first web</h2>
+    <p>If you introduce a GitHub username on this web, you will obtain in a table information about their repositories</p>
+    <p></p>
+    <p> GitHub Username: <input type="text" id = "user" value=""></p>
+    <button type = "button" class="btn btn-primary"> Show me the table </button>
+    <p></p>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th class="text-center">Name of the repository</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Number of followers</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="text-center" id = "name1"></td>
+            <td class="text-center" id = "description1" ></td>
+            <td class="text-center" id = "followers1" ></td>
+        </tr>
+        <tr>
+            <td class="text-center" id = "name2" ></td>
+            <td class="text-center" id = "description2" ></td>
+            <td class="text-center" id = "followers2" ></td>
+        </tr>
+        <tr>
+            <td class="text-center" id = "name3" ></td>
+            <td class="text-center" id = "description3" ></td>
+            <td class="text-center" id = "followers3" ></td>
+        </tr>
+        <tr>
+            <td class="text-center" id = "name4" ></td>
+            <td class="text-center" id = "description4" ></td>
+            <td class="text-center" id = "followers4" ></td>
+        </tr>
+        <tr>
+            <td class="text-center" id = "name5" ></td>
+            <td class="text-center" id = "description5" ></td>
+            <td class="text-center" id = "followers5" ></td>
+        </tr>
+        <tr>
+            <td class="text-center" id = "name6" ></td>
+            <td class="text-center" id = "description6" ></td>
+            <td class="text-center" id = "followers6" ></td>
+        </tr>
+        <tr>
+            <td class="text-center" id = "name7" ></td>
+            <td class="text-center" id = "description7" ></td>
+            <td class="text-center" id = "followers7" ></td>
+        </tr>
+        <tr>
+            <td class="text-center" id = "name8" ></td>
+            <td class="text-center" id = "description8" ></td>
+            <td class="text-center" id = "followers8" ></td>
+        </tr>
+        <tr>
+            <td class="text-center" id = "name9" ></td>
+            <td class="text-center" id = "description9" ></td>
+            <td class="text-center" id = "followers9" ></td>
+        </tr>
+        <tr>
+            <td class="text-center" id = "name10" ></td>
+            <td class="text-center" id = "description10" ></td>
+            <td class="text-center" id = "followers10" ></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
