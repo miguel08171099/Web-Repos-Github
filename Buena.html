@@ -10,31 +10,17 @@
     <script>
     $(Document).ready(function(){
         $("button").click(function(){
-                usuario = $("#user").val();
-                url = "https://api.github.com/users/" + usuario;
-            	 $.getJSON(url).done(function(data) {
-            	    resultFollowers = data.followers;
-            	    $("#followers1").text(result);
-                  });
+                 usuario = $("#user").val();
                  i = 0;
-                 url2 = "https://api.github.com/users/" + usuario + "/repos";
-            	 $.getJSON(url2).done(function(data) {
+                 url = "https://api.github.com/users/" + usuario + "/repos";
+            	 $.getJSON(url).done(function(data) {
                     $.each(data, function(key, item) {
                        //alert("Respuesta: " + item.name);
                        i++;
-                       result = item.name;
-                       $("#name"+i).text(result);
-                       $("#followers"+i).text(resultFollowers);
-                    });
-                  });
-
-                 j = 0;
-                 url3 = "https://api.github.com/users/" + usuario + "/repos";
-            	 $.getJSON(url3).done(function(data) {
-                    $.each(data, function(key, item) {
-                       j++;
-                       result = item.description;
-                       $("#description"+j).text(result);
+                       //result = item.name;
+                       $("#name"+i).text(item.name);
+                       $("#description"+i).text(item.description);
+                       $("#followers"+i).text(item.stargazers_count);
                     });
                   });
         });
